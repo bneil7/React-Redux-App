@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchFacts } from '../store/actions'
+import '../App.css';
 
 const FactsList = (props) => {
     useEffect(() => {
@@ -9,14 +10,14 @@ const FactsList = (props) => {
     }, []);
     
     return (
-        <div>
+        <div className="list">
             {props.isLoading && <h4>Loading factssss...</h4>}
             {props.error && <p className="error">error.. sucks, dude.</p>}
             {props.facts.length > 0 && (
             <div>
                 {props.facts.map((fact, index) => (
                     <p key={index}>
-                        {fact}
+                        🐱 {fact}
                     </p>
                 ))}
             </div>

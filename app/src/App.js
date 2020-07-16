@@ -10,9 +10,9 @@ import './App.css';
 function App(props) {
   return (
     <div className="App">
-      <h1>CAT FAX</h1>
-      <button onClick={props.fetchFacts}>get random fact</button>
-      <FactsList />
+      <h1>CAT FACTS</h1>
+      <button onClick={props.fetchFacts}>get random fact about cats</button>
+      <FactsList className="list"/>
     </div>
   );
 }
