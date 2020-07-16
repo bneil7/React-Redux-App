@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { fetchFacts } from './store/actions'
+
+import { connect } from 'react-redux';
+
+import FactsList from "./components/FactsList";
 import './App.css';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>CAT FAX</h1>
+      <button onClick={props.fetchFacts}>get random fact</button>
+      <FactsList />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      isLoading: state.isLoading,
+      facts: state.facts,
+      error: state.error
+  };
+};
+
+export default connect(mapStateToProps, {fetchFacts})(App);
